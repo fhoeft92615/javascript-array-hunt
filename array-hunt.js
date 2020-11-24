@@ -99,36 +99,95 @@ $(document).ready(function () {
         Find the first string that contains an 'n'.
         Output it to td#firstEnn
          */
+        var findN;
 
+        for(var i = 0; i < myArray.length; i++){
+            if (myArray[i].includes("n")) {
+                findN = myArray[i]
+                break;
+            }
+        }
+        $("td#firstEnn").text(findN)
 
         /*
         Find all of the strings with less than 6 characters.
         Output them to td#lessThanSix
          */
+        var lessThanSix = "";
 
+        for(var i = 0; i < myArray.length; i++){
+            if (myArray[i].length < 6 ){
+                lessThanSix = lessThanSix + " " + myArray[i]
+            }
+        };
+        $("td#lessThanSix").text(lessThanSix);
 
         /*
         Find the longest string in the array.
         Output it to td#longName
          */
-
+        var longest = "";
+        for(var i = 0; i < myArray.length; i++){
+            if(myArray[i].length > longest.length){
+                longest = myArray[i]
+            }
+        };
+        $("td#longName").text(longest);
 
         /*
         Find all of the strings that do not contain the letter 's'.
         Output them to td#noEss
          */
+        var noS = "";
 
+        for(var i = 0; i < myArray.length; i++){
+            if (!myArray[i].includes("s")) {
+                noS = noS + " " + myArray[i]
+            }
+        }
+        $("td#noEss").text(noS)
 
         /*
         Output all of the strings, but with all of their vowels
         in uppercase, to td#upperVowels
          */
+        var spongeBobCase =
+            myArray.map(
+                item =>{
+                    var newWord = "";
+                    for(var i = 0; i < item.length; i++){
+                        if (item.charAt(i) === 'a' || item.charAt(i) === 'e' || item.charAt(i) === 'i' || item.charAt(i) === 'o' || item.charAt(i) === 'u') {
+                            newWord = newWord + item.charAt(i).toUpperCase()
+                        }
+                        else{
+                            newWord = newWord + item.charAt(i)
+                        }
+                    }
+                    return newWord;}
+            )
+        var displaySpongeBob = "";
+        for(var i = 0; i < spongeBobCase.length; i++) {
+            displaySpongeBob = displaySpongeBob + " " + spongeBobCase[i];
+        }
+        $("td#upperVowels").text(displaySpongeBob);
 
 
         /*
         Output all of the strings in reverse order and separated by
         ' - ' to td#reverseDash
          */
+        var displayNew = "";
+        var reverseArray = myArray.reverse()
+        for(var i = 0; i < reverseArray.length; i++) {
+            if(displayNew === "") {
+                displayNew = displayNew + reverseArray[i];
+            }
+            else {
+                displayNew = displayNew + " - " + reverseArray[i];
+            }
+        }
+
+        $("td#reverseDash").text(displayNew)
 
 
     }
